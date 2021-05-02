@@ -70,9 +70,8 @@ class Record:
 @dataclass
 class Block:
 
-    # @TODO
-    # Rename the `data` attribute to `record`, and set the data type to `Record`
-    data: Any
+    # Use an instance of the Record class
+    record: Record
 
     creator_id: int
     prev_hash: str = 0
@@ -172,28 +171,24 @@ pychain = setup()
 # Delete the `input_data` variable from the Streamlit interface.
 input_data = st.text_input("Block Data")
 
-# @TODO:
 # Add an input area where you can get a value for `sender` from the user.
-# YOUR CODE HERE
+sender = st.text_input('Please enter your sender id')
 
-# @TODO:
 # Add an input area where you can get a value for `receiver` from the user.
-# YOUR CODE HERE
+receiever = st.text_input('Please enter your recipient id')
 
-# @TODO:
 # Add an input area where you can get a value for `amount` from the user.
-# YOUR CODE HERE
+amount = st.text_input('How much would you like to send?')
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
     prev_block_hash = prev_block.hash_block()
 
-    # @TODO
     # Update `new_block` so that `Block` consists of an attribute named `record`
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
     new_block = Block(
-        data=input_data,
+        record=Record,
         creator_id=42,
         prev_hash=prev_block_hash
     )
