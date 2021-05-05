@@ -59,24 +59,17 @@ class Record:
 # Step 2:
 # Modify the Existing Block Data Class to Store Record Data
 
-# Rename the `data` attribute in your `Block` class to `record`, and then set
-# it to use an instance of the new `Record` class that you created in the
-# previous section. To do so, complete the following steps:
-# 1. In the `Block` class, rename the `data` attribute to `record`.
-# 2. Set the data type of the `record` attribute to `Record`.
-
-
 @dataclass
 class Block:
 
     # Use an instance of the Record class
     record: Record
-
+    # Set variables for creator_id, previous_hash, time, and nonce
     creator_id: int
     prev_hash: str = 0
     timestamp: str = datetime.datetime.utcnow().strftime("%H:%M:%S")
     nonce: str = 0
-
+    # Create hash_block function to encrypt info
     def hash_block(self):
         sha = hashlib.sha256()
 
