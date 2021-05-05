@@ -69,7 +69,7 @@ class Block:
     prev_hash: str = 0
     timestamp: str = datetime.datetime.utcnow().strftime("%H:%M:%S")
     nonce: str = 0
-    # Create hash_block function to encrypt info
+    # Create hash_block function to encrypt the block info
     def hash_block(self):
         sha = hashlib.sha256()
 
@@ -96,6 +96,7 @@ class PyChain:
     chain: List[Block]
     difficulty: int = 4
 
+    # Create proof_of_work function
     def proof_of_work(self, block):
 
         calculated_hash = block.hash_block()
@@ -158,10 +159,6 @@ pychain = setup()
 # 3. Add an input area where you can get a value for `receiver` from the user.
 # 4. Add an input area where you can get a value for `amount` from the user.
 # 5. As part of the Add Block button functionality, update `new_block` so that `Block` consists of an attribute named `record`, which is set equal to a `Record` that contains the `sender`, `receiver`, and `amount` values. The updated `Block`should also include the attributes for `creator_id` and `prev_hash`.
-
-# @TODO:
-# Delete the `input_data` variable from the Streamlit interface.
-input_data = st.text_input("Block Data")
 
 # Add an input area where you can get a value for `sender` from the user.
 sender = st.text_input('Please enter your sender id')
